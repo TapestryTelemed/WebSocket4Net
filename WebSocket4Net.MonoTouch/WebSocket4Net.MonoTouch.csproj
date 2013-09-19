@@ -31,19 +31,8 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SuperSocket.ClientEngine.Common, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MT\Debug\SuperSocket.ClientEngine.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MT\Debug\SuperSocket.ClientEngine.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Protocol, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MT\Debug\SuperSocket.ClientEngine.Protocol.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Proxy">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MT\Debug\SuperSocket.ClientEngine.Proxy.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
@@ -195,10 +184,28 @@
       <Link>WebSocketVersion.cs</Link>
     </Compile>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Common.MonoTouch\Common.MonoTouch.csproj">
+      <Project>{7b29d7ae-d8c6-46b2-bff9-ce1b88e10355}</Project>
+      <Name>Common.MonoTouch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Core.MonoTouch\Core.MonoTouch.csproj">
+      <Project>{9a11bf63-8f81-481c-92c6-16b61250dacb}</Project>
+      <Name>Core.MonoTouch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Protocol.MonoTouch\Protocol.MonoTouch.csproj">
+      <Project>{9314af2c-7426-40c0-a69d-6155ce190795}</Project>
+      <Name>Protocol.MonoTouch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Proxy.MonoTouch\Proxy.MonoTouch.csproj">
+      <Project>{728b0348-525e-4f15-8765-fda41cd417d5}</Project>
+      <Name>Proxy.MonoTouch</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" ProjectLinkReference="119c56bd-c133-4d7b-9c33-0f8ce1b1b61e" />
+      <UserProperties ProjectLinkReference="119c56bd-c133-4d7b-9c33-0f8ce1b1b61e" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
