@@ -269,6 +269,13 @@ namespace WebSocket4Net
         void client_Error(object sender, ErrorEventArgs e)
         {
             OnError(e);
+
+            //Also fire close event if the connection fail to connect
+            if (m_StateCode == WebSocketStateConst.Connecting)
+            {
+                m_StateCode = WebSocketStateConst.Closing;
+                OnClosed();
+            }
         }
 
         void client_Closed(object sender, EventArgs e)
@@ -366,7 +373,15 @@ namespace WebSocket4Net
 
             var protocolProcessor = state as IProtocolProcessor;
             m_LastPingRequest = DateTime.Now.ToString();
-            protocolProcessor.SendPing(this, m_LastPingRequest);
+
+            try
+            {
+                protocolProcessor.SendPing(this, m_LastPingRequest);
+            }
+            catch (Exception e)
+            {
+                OnError(e);
+            }
         }
 
         private EventHandler m_Opened;
@@ -480,14 +495,15 @@ namespace WebSocket4Net
             }
 
             //The websocket is connecting or in handshake
-            if (Interlocked.CompareExchange(ref m_StateCode, WebSocketStateConst.Closed, WebSocketStateConst.Connecting)
+            if (Interlocked.CompareExchange(ref m_StateCode, WebSocketStateConst.Closing, WebSocketStateConst.Connecting)
                     == WebSocketStateConst.Connecting)
             {
                 var client = Client;
 
-                if (client != null)
+                if (client != null && client.IsConnected)
                 {
                     client.Close();
+                    return;
                 }
 
                 OnClosed();
@@ -506,9 +522,16 @@ namespace WebSocket4Net
 
         private void CheckCloseHandshake(object state)
         {
-            if (m_StateCode != WebSocketStateConst.Closed)
+            if (m_StateCode == WebSocketStateConst.Closed)
+                return;
+
+            try
             {
                 CloseWithoutHandshake();
+            }
+            catch (Exception e)
+            {
+                OnError(e);
             }
         }
 
@@ -594,8 +617,6 @@ namespace WebSocket4Net
 
         private void OnError(ErrorEventArgs e)
         {
-            Interlocked.CompareExchange(ref m_StateCode, WebSocketStateConst.None, WebSocketStateConst.Connecting);
-
             var handler = m_Error;
 
             if (handler == null)

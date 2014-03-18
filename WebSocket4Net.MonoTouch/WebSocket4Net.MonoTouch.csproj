@@ -38,7 +38,6 @@
     <Reference Include="monotouch" />
     <Reference Include="System.Json" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.ServiceModel.Web" />
   </ItemGroup>
   <ItemGroup>
@@ -183,24 +182,6 @@
     <Compile Include="..\WebSocket4Net\WebSocketVersion.cs">
       <Link>WebSocketVersion.cs</Link>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Common.MonoTouch\Common.MonoTouch.csproj">
-      <Project>{7b29d7ae-d8c6-46b2-bff9-ce1b88e10355}</Project>
-      <Name>Common.MonoTouch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Core.MonoTouch\Core.MonoTouch.csproj">
-      <Project>{9a11bf63-8f81-481c-92c6-16b61250dacb}</Project>
-      <Name>Core.MonoTouch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Protocol.MonoTouch\Protocol.MonoTouch.csproj">
-      <Project>{9314af2c-7426-40c0-a69d-6155ce190795}</Project>
-      <Name>Protocol.MonoTouch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\MonoTouch\Proxy.MonoTouch\Proxy.MonoTouch.csproj">
-      <Project>{728b0348-525e-4f15-8765-fda41cd417d5}</Project>
-      <Name>Proxy.MonoTouch</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ProjectExtensions>
