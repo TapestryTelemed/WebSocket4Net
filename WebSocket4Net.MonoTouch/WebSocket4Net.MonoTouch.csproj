@@ -31,18 +31,34 @@
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SuperSocket.ClientEngine.Common, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\$(Configuration)\SuperSocket.ClientEngine.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Core, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\$(Configuration)\SuperSocket.ClientEngine.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Protocol, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\$(Configuration)\SuperSocket.ClientEngine.Protocol.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Proxy, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\$(Configuration)\SuperSocket.ClientEngine.Proxy.dll</HintPath>
-    </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Debug' " Include="SuperSocket.ClientEngine.Common, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Debug\SuperSocket.ClientEngine.Common.dll</HintPath>
+        </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Debug' " Include="SuperSocket.ClientEngine.Core, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Debug\SuperSocket.ClientEngine.Core.dll</HintPath>
+        </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Debug' " Include="SuperSocket.ClientEngine.Protocol, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Debug\SuperSocket.ClientEngine.Protocol.dll</HintPath>
+        </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Debug' " Include="SuperSocket.ClientEngine.Proxy, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Debug\SuperSocket.ClientEngine.Proxy.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+      <ItemGroup>
+        <Reference Condition=" '$(Configuration)' == 'Release' " Include="SuperSocket.ClientEngine.Common, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Release\SuperSocket.ClientEngine.Common.dll</HintPath>
+        </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Release' " Include="SuperSocket.ClientEngine.Core, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Release\SuperSocket.ClientEngine.Core.dll</HintPath>
+        </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Release' " Include="SuperSocket.ClientEngine.Protocol, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Release\SuperSocket.ClientEngine.Protocol.dll</HintPath>
+        </Reference>
+        <Reference Condition=" '$(Configuration)' == 'Release' " Include="SuperSocket.ClientEngine.Proxy, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\Reference\SuperSocket.ClientEngine\MonoTouch\Release\SuperSocket.ClientEngine.Proxy.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    <ItemGroup> 
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
