@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,10 +35,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
+    <Reference Include="SuperSocket.ClientEngine.Common">
+      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoDroid\$(Configuration)\SuperSocket.ClientEngine.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine.Core">
+      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoDroid\$(Configuration)\SuperSocket.ClientEngine.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine.Protocol">
+      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoDroid\$(Configuration)\SuperSocket.ClientEngine.Protocol.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -214,20 +224,6 @@
     <Compile Include="..\WebSocket4Net\WebSocketVersion.cs">
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Common\Common.MonoDroid.csproj">
-      <Project>{38367ec0-d72e-4ec5-8fba-0ae3706a2c49}</Project>
-      <Name>Common.MonoDroid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Core\Core.MonoDroid.csproj">
-      <Project>{6447caeb-757a-4d47-91ba-71e521aa7b42}</Project>
-      <Name>Core.MonoDroid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Protocol\Protocol.MonoDroid.csproj">
-      <Project>{af269343-f9fd-4823-ac0a-3481446c7686}</Project>
-      <Name>Protocol.MonoDroid</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <PropertyGroup>

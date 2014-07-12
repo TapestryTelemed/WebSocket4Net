@@ -109,7 +109,9 @@ namespace WebSocket4Net
 
         internal string Origin { get; private set; }
 
+#if !__IOS__
         public bool NoDelay { get; set; }
+#endif
 
         static WebSocket()
         {
@@ -271,11 +273,7 @@ namespace WebSocket4Net
             OnError(e);
 
             //Also fire close event if the connection fail to connect
-            if (m_StateCode == WebSocketStateConst.Connecting)
-            {
-                m_StateCode = WebSocketStateConst.Closing;
-                OnClosed();
-            }
+            OnClosed();
         }
 
         void client_Closed(object sender, EventArgs e)
@@ -312,12 +310,14 @@ namespace WebSocket4Net
             if (Proxy != null)
                 Client.Proxy = Proxy;
 
+#if !__IOS__
             Client.NoDeplay = NoDelay;
+#endif
 
 #if SILVERLIGHT
-    #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE
             Client.ClientAccessPolicyProtocol = ClientAccessPolicyProtocol;
-    #endif
+#endif
 #endif
             Client.Connect();
         }
@@ -465,7 +465,7 @@ namespace WebSocket4Net
         {
             var fireBaseClose = false;
 
-            if (m_StateCode == WebSocketStateConst.Closing || m_StateCode == WebSocketStateConst.Open)
+            if (m_StateCode == WebSocketStateConst.Closing || m_StateCode == WebSocketStateConst.Open || m_StateCode == WebSocketStateConst.Connecting)
                 fireBaseClose = true;
 
             m_StateCode = WebSocketStateConst.Closed;
