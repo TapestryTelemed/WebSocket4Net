@@ -40,15 +40,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="SuperSocket.ClientEngine.Common">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoDroid\$(Configuration)\SuperSocket.ClientEngine.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Core">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoDroid\$(Configuration)\SuperSocket.ClientEngine.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Protocol">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\MonoDroid\$(Configuration)\SuperSocket.ClientEngine.Protocol.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -224,6 +215,24 @@
     <Compile Include="..\WebSocket4Net\WebSocketVersion.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Common\Common.MonoDroid.csproj">
+      <Project>{38367ec0-d72e-4ec5-8fba-0ae3706a2c49}</Project>
+      <Name>Common.MonoDroid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Core\Core.MonoDroid.csproj">
+      <Project>{6447caeb-757a-4d47-91ba-71e521aa7b42}</Project>
+      <Name>Core.MonoDroid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Protocol\Protocol.MonoDroid.csproj">
+      <Project>{8c2d13fb-efc9-4f54-bee8-040f1604343e}</Project>
+      <Name>Protocol.MonoDroid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Proxy\Proxy.MonoDroid.csproj">
+      <Project>{aefb6063-063d-4124-9da6-f88350ce0039}</Project>
+      <Name>Proxy.MonoDroid</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <PropertyGroup>
