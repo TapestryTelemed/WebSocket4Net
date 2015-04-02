@@ -50,11 +50,18 @@ namespace WebSocket4Net.Protocol
 
             var handshakeBuilder = new StringBuilder();
 
+            if (websocket.HttpConnectProxy == null)
+            {
 #if SILVERLIGHT
-            handshakeBuilder.AppendFormatWithCrCf("GET {0} HTTP/1.1", websocket.TargetUri.GetPathAndQuery());
+                handshakeBuilder.AppendFormatWithCrCf("GET {0} HTTP/1.1", websocket.TargetUri.GetPathAndQuery());
 #else
-            handshakeBuilder.AppendFormatWithCrCf("GET {0} HTTP/1.1", websocket.TargetUri.PathAndQuery);
+                handshakeBuilder.AppendFormatWithCrCf("GET {0} HTTP/1.1", websocket.TargetUri.PathAndQuery);
 #endif
+            }
+            else
+            {
+                handshakeBuilder.AppendFormatWithCrCf("GET {0} HTTP/1.1", websocket.TargetUri.ToString());
+            }
 
             handshakeBuilder.AppendWithCrCf("Upgrade: WebSocket");
             handshakeBuilder.AppendWithCrCf("Connection: Upgrade");
@@ -65,7 +72,7 @@ namespace WebSocket4Net.Protocol
             handshakeBuilder.Append("Host: ");
             handshakeBuilder.AppendWithCrCf(websocket.HandshakeHost);
             handshakeBuilder.Append(string.Format("{0}: ", m_OriginHeaderName));
-            handshakeBuilder.AppendWithCrCf(string.IsNullOrEmpty(websocket.Origin) ? websocket.TargetUri.Host : websocket.Origin);
+            handshakeBuilder.AppendWithCrCf(websocket.Origin);
 
             if (!string.IsNullOrEmpty(websocket.SubProtocol))
             {
@@ -208,6 +215,10 @@ namespace WebSocket4Net.Protocol
             playloadData[0] = (byte)highByte;
             playloadData[1] = (byte)lowByte;
 
+            // don't send close handshake now because the connection was closed already
+            if (websocket.State == WebSocketState.Closed)
+                return;
+
             if (!string.IsNullOrEmpty(closeReason))
             {
                 int bytesCount = Encoding.UTF8.GetBytes(closeReason, 0, closeReason.Length, playloadData, 2);
@@ -251,7 +262,7 @@ namespace WebSocket4Net.Protocol
                 return false;
             }
 
-            if (!ExptectedResponseVerbLines.Contains(verbLine))
+            if (!ValidateVerbLine(verbLine))
             {
                 description = verbLine;
                 return false;

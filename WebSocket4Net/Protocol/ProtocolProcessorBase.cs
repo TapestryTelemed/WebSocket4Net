@@ -9,13 +9,6 @@ namespace WebSocket4Net.Protocol
     {
         protected const string HeaderItemFormat = "{0}: {1}";
 
-        protected static string[] ExptectedResponseVerbLines = new string[]
-        {
-            "HTTP/1.1 101 WebSocket Protocol Handshake",
-            "HTTP/1.1 101 Web Socket Protocol Handshake",
-            "HTTP/1.1 101 Switching Protocols"
-        };
-
         public ProtocolProcessorBase(WebSocketVersion version, ICloseStatusCode closeStatusCode)
         {
             CloseStatusCode = closeStatusCode;
@@ -50,5 +43,25 @@ namespace WebSocket4Net.Protocol
         public WebSocketVersion Version { get; private set; }
 
         protected string VersionTag { get; private set; }
+
+        private static char[] s_SpaceSpliter = new char[] { ' ' };
+
+        protected virtual bool ValidateVerbLine(string verbLine)
+        {
+            var parts = verbLine.Split(s_SpaceSpliter, 3, StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts.Length < 3)
+                return false;
+
+            if (!parts[0].StartsWith("HTTP/"))
+                return false;
+
+            var statusCode = 0;
+
+            if (!int.TryParse(parts[1], out statusCode))
+                return false;
+
+            return statusCode == 101;
+        }
     }
 }
