@@ -98,15 +98,18 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SuperSocket.ClientEngine.Common">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\WP80\$(Configuration)\SuperSocket.ClientEngine.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Core">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\WP80\$(Configuration)\SuperSocket.ClientEngine.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.ClientEngine.Protocol">
-      <HintPath>..\Reference\SuperSocket.ClientEngine\WP80\$(Configuration)\SuperSocket.ClientEngine.Protocol.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Common\Common.WP80.csproj">
+      <Project>{a7cd766f-4033-45dd-9e9a-7eea1f5cd08e}</Project>
+      <Name>Common.WP80</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Core\Core.WP80.csproj">
+      <Project>{38a1b75c-ad6c-40e3-9e35-b5f00ab2ff2f}</Project>
+      <Name>Core.WP80</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SuperSocket.ClientEngine\Protocol\Protocol.WP80.csproj">
+      <Project>{ecec2c29-1e1e-48ef-b544-76510c2d42b9}</Project>
+      <Name>Protocol.WP80</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\WebSocket4Net\ClosedEventArgs.cs">
