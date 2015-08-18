@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{119C56BD-C133-4D7B-9C33-0F8CE1B1B61E}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -16,7 +14,6 @@
     <AndroidSupportedAbis>armeabi</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
-    <TargetFrameworkVersion>v2.2</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -35,7 +32,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
@@ -218,19 +214,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SuperSocket.ClientEngine\Common\Common.MonoDroid.csproj">
-      <Project>{38367ec0-d72e-4ec5-8fba-0ae3706a2c49}</Project>
+      <Project>{38367EC0-D72E-4EC5-8FBA-0AE3706A2C49}</Project>
       <Name>Common.MonoDroid</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SuperSocket.ClientEngine\Core\Core.MonoDroid.csproj">
-      <Project>{6447caeb-757a-4d47-91ba-71e521aa7b42}</Project>
+      <Project>{6447CAEB-757A-4D47-91BA-71E521AA7B42}</Project>
       <Name>Core.MonoDroid</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SuperSocket.ClientEngine\Protocol\Protocol.MonoDroid.csproj">
-      <Project>{8c2d13fb-efc9-4f54-bee8-040f1604343e}</Project>
+      <Project>{AF269343-F9FD-4823-AC0A-3481446C7686}</Project>
       <Name>Protocol.MonoDroid</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SuperSocket.ClientEngine\Proxy\Proxy.MonoDroid.csproj">
-      <Project>{aefb6063-063d-4124-9da6-f88350ce0039}</Project>
+      <Project>{AEFB6063-063D-4124-9DA6-F88350CE0039}</Project>
       <Name>Proxy.MonoDroid</Name>
     </ProjectReference>
   </ItemGroup>
