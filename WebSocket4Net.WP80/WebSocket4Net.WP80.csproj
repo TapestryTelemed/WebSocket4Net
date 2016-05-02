@@ -98,6 +98,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\WebSocket4Net\ClosedEventArgs.cs">
+      <Link>ClosedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\WebSocket4Net\Command\BadRequest.cs">
       <Link>Command\BadRequest.cs</Link>
     </Compile>
